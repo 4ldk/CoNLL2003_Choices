@@ -1,0 +1,5 @@
+model/
+row_data/
+outputs/
+full_choice_data/
+/**/__pycache__/

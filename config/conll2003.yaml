@@ -1,0 +1,31 @@
+hydra:
+  run:
+    dir: outputs/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+
+batch_size: 4
+accum_iter: 8
+lr: 5e-5
+num_epoch: 20
+length: 512
+p: 0
+seed: 42
+device: "cuda"
+model_name: "roberta-base" # bert-large-cased roberta-large
+
+weight_decay: 0.01
+use_loss_weight: False
+use_scheduler: True
+warmup_late: 0.1
+
+post_sentence_padding: True
+add_sep_between_sentences: True
+
+test: "valid" # valid, test, 2023, crossweigh
+
+local_model: "model/RobertaBaseReg3.pth"
+loop: 1
+pred_p: 0.1
+
+huggingface_cache: "D:/huggingface/cashe"
+visible_devices: "0"
