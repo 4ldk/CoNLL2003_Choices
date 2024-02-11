@@ -13,7 +13,7 @@ We removed the original token and label data. Therefore, only the inference labe
 1. `git clone git@github.com:4ldk/CoNLL2003_Choices.git`
 2. `cd CoNLL2003_Choices`
 3. `mkdir row_data`
-4. Copy each data to row_data
+4. Copy each data to `row_data/`
     - Copy Original data (`eng.train`, `eng.testa`, `eng.tesb`) directly.
         - The following two repositories also have original data, but some data that are not suitable for training have been erased. The data and models published in this repository is based on data that has not been erased.
     - Copy `conllpp.txt` of [CoNLL++(2023)](https://github.com/ShuhengL/acl2023_conllpp) directly.
