@@ -20,7 +20,7 @@ We removed the original token and label data. Therefore, only the inference labe
     - Copy `conllpp_test.txt` of [CoNLL++(CrossWeigh)](https://github.com/ZihanWangKi/CrossWeigh) as `conllcw.txt`
 5. `pip install -r requirement.txt`
 
-## Add Original label and token information to choice_data
+## Add original label and token information to choice_data
 1. `python3 ./src/add_row_data.py`
 
 ## Create choice data by using the trained model
