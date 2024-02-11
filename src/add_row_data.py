@@ -38,7 +38,7 @@ for test in ["train", "valid", "test", "2023", "crossweigh"]:
     elif test == "crossweigh":
         row_dataset = path_to_data(os.path.join(root_path, "row_data/conllcw.txt"))
 
-    with open(os.path.join(root_path, f"choice_data/{test}_choices.json")) as f:
+    with open(os.path.join(root_path, f"choice_data/{test}_choices.json"), encoding="utf-8") as f:
         choice_dataset = json.load(f)
 
     output = []
@@ -61,5 +61,5 @@ for test in ["train", "valid", "test", "2023", "crossweigh"]:
             )
         )
 
-    with open(os.path.join(root_path, "full_choice_data", f"{test}_choices.json"), "wt") as f:
+    with open(os.path.join(root_path, "full_choice_data", f"{test}_choices.json"), "wt", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
