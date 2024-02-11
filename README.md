@@ -29,13 +29,13 @@ We removed the original token and label data. Therefore, only the inference labe
 3. Edit `config/config2003.yaml` to set the model to use, inference data, and iteration of inferences.
 4. `python3 ./src/predictor.py`
 
-## Train model and create train choice data
+## Train models and create train choice data
 1. Edit `config/config2003.yaml`
 2. If you want to change the number of divisions in the train data, Change line 12 of `make_cross_data.py` and lines 106 and 108 of `train_cross_var.py`.
 3. `python3 ./src/make_cross_data.py`
 4. `python3 ./src/train_cross_var.py`
 
-## Train model by all train data and create choice data
+## Train a model by all train data and create choice data
 1. Edit `config/config2003.yaml`
 2. `python3 ./src/train_all_train_data.py`
 3. `python3 ./src/predictor.py`
