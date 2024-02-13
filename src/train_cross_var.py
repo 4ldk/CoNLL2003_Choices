@@ -59,11 +59,10 @@ def run(cfg, cross_num, train_datasets, valid_dataset):
     tokenizer = RobertaTokenizerDropout.from_pretrained(cfg.model_name, alpha=cfg.pred_p)
 
     model_dir = os.path.join(root_path, "model")
-    old_model_name = os.path.join(model_dir, f"epoch{cfg.num_epoch-1}.pth")
+    old_model_name = f"./model/epoch{cfg.num_epoch-1}.pth"
     local_model = os.path.join(model_dir, f"cross{cross_num}.pth")
 
     shutil.copy(old_model_name, local_model)
-    os.remove(os.path.join(model_dir, f"epoch{cfg.num_epoch-1}.pth"))
 
     config = AutoConfig.from_pretrained(cfg.model_name, num_labels=len(ner_dict))
     model = AutoModelForTokenClassification.from_config(config)
@@ -116,7 +115,7 @@ def main(cfg):
             valid_dataset = pickle.load(f)
 
         out += run(cfg, i, train_datasets, valid_dataset)
-        with open(f"./choice_data/train_choices_cross{i}.json", "wt") as f:
+        with open(os.path.join(root_path, f"choice_data/train_choices_cross{i}.json"), "wt") as f:
             json.dump(out, f, indent=2, ensure_ascii=False)
 
     txt_dataset = path_to_data(os.path.join(root_path, "row_data/eng.train"))

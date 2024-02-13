@@ -1,5 +1,6 @@
 import os
 import random
+import shutil
 import sys
 from logging import getLogger
 
@@ -66,7 +67,11 @@ def main(cfg):
 
     tokenizer = RobertaTokenizerDropout.from_pretrained(cfg.model_name, alpha=cfg.pred_p)
 
+    old_model_name = f"./model/epoch{cfg.num_epoch-1}.pth"
     local_model = os.path.join(root_path, "model", f"epoch{cfg.num_epoch-1}.pth")
+
+    shutil.copy(old_model_name, local_model)
+
     config = AutoConfig.from_pretrained(cfg.model_name, num_labels=len(ner_dict))
     model = AutoModelForTokenClassification.from_config(config)
     model.load_state_dict(torch.load(local_model))

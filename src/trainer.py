@@ -207,8 +207,6 @@ class trainer:
 
             print(f"best_epoch: {best_epoch}")
             shutil.copy(f"./model/epoch{best_epoch}.pth", "./model/best.pth")
-        for i in range(num_epoch - 1):
-            os.remove(f"./model/epoch{i}.pth")
 
     def get_score(self, preds, labels):
         preds = torch.concatenate(preds)
