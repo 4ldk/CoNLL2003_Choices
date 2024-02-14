@@ -245,10 +245,10 @@ def train(
     init_scale = 4096
     os.makedirs("./model", exist_ok=True)
 
-    tokeninzer = RobertaTokenizerDropout.from_pretrained(model_name, alpha=p)
+    tokenizer = RobertaTokenizerDropout.from_pretrained(model_name, alpha=p)
 
     train_data = dataset_encode(
-        tokeninzer,
+        tokenizer,
         train_datasets,
         p=p,
         padding=length,
@@ -259,7 +259,7 @@ def train(
     train_loader = get_dataloader(train_data, batch_size=batch_size, shuffle=True)
 
     valid_data = dataset_encode(
-        tokeninzer,
+        tokenizer,
         valid_dataset,
         p=0,
         padding=length,
@@ -290,7 +290,7 @@ def train(
         device=device,
     )
     net.train(
-        tokeninzer,
+        tokenizer,
         train_datasets,
         train_loader,
         num_epoch,
