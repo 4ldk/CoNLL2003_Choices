@@ -95,8 +95,8 @@ def main(cfg):
                 out_label = [val_to_key(o_n, ner_dict) for o_n in out_label]
                 golden_labels.append(out_label)
                 pred_labels.append(pred)
-
-    print(seqeval.metrics.classification_report([pred_labels], [golden_labels], digits=4))
+    print(len(golden_labels), golden_labels[0], "\n", pred_labels[0])
+    print(seqeval.metrics.classification_report(pred_labels, golden_labels, digits=4))
 
 
 if __name__ == "__main__":
