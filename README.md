@@ -26,7 +26,7 @@ We removed the original token and label data. Therefore, only the inference labe
 
 ## Create choice data by using the trained model
 1. `mkdir model`
-2. Edit `config/config2003.yaml` to set `test` inference data, `loop` iteration of inferences, `pred_p` subword regularization hyperparameter, `load_local_model: False` and `test_model_name: "4ldk/Roberta-Base-CoNLL2003"`.
+2. Edit `config/config2003.yaml` to set `test` test data, `loop` the number of test loops, `pred_p` subword regularization hyperparameter p, `load_local_model: False` and `test_model_name: "4ldk/Roberta-Base-CoNLL2003"`.
 3. `python3 ./src/predictor.py`
 
 ## Train models and create train choice data
