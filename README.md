@@ -41,3 +41,8 @@ We removed the original token and label data. Therefore, only the inference labe
 2. `python3 ./src/train_all_train_data.py`
 3. `python3 ./src/predictor.py`
 
+## Reference
+1. [BPE-Dropout: Simple and Effective Subword Regularization](https://aclanthology.org/2020.acl-main.170/)
+2. [CoNLL2003](https://www.clips.uantwerpen.be/conll2003/ner/)
+3. [Do CoNLL-2003 Named Entity Taggers Still Work Well in 2023?](https://aclanthology.org/2023.acl-long.459.pdf) [github](https://github.com/ShuhengL/acl2023_conllpp)
+4. [CrossWeigh: Training Named Entity Tagger from Imperfect Annotations](https://aclanthology.org/D19-1519/) [github](https://github.com/ZihanWangKi/CrossWeigh)
