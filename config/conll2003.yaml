@@ -23,7 +23,6 @@ add_sep_between_sentences: True
 
 test: "valid" # valid, test, 2023, crossweigh
 
-local_model: "model/RobertaBaseReg3.pth"
 loop: 1
 pred_p: 0.1
 
