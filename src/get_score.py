@@ -6,14 +6,13 @@ from logging import getLogger
 import hydra
 import numpy as np
 import torch
-from seqeval.metrics import f1_score
 from tqdm import tqdm
 from transformers import AutoModelForTokenClassification
 import seqeval.metrics
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "."))
 from bpe_dropout import RobertaTokenizerDropout
-from utils import boi1_to_2, dataset_encode, get_dataloader, get_label, path_to_data, save_choices, val_to_key
+from utils import dataset_encode, get_dataloader, path_to_data, val_to_key
 
 root_path = os.getcwd()
 logger = getLogger(__name__)

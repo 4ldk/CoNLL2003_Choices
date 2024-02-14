@@ -60,13 +60,11 @@ class trainer:
         self.optimizer = optim.AdamW(optimizer_grouped_parameters, lr=lr)
 
         self.loss_func = nn.CrossEntropyLoss(weight=weight, ignore_index=ner_dict["PAD"])
-        self.mv_loss_func = nn.KLDivLoss(reduction="batchmean")
         self.scaler = torch.cuda.amp.GradScaler(init_scale=init_scale)
         if use_scheduler:
             self.scheduler = get_linear_schedule_with_warmup(self.optimizer, num_warmup_steps, num_training_steps)
 
         self.device = device
-        self.model_name = model_name
         self.batch_size = batch_size
         self.length = length
         self.use_scheduler = use_scheduler
