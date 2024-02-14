@@ -51,7 +51,7 @@ def run(cfg, cross_num, train_datasets, valid_dataset):
         weight_decay=cfg.weight_decay,
         use_loss_weight=cfg.use_loss_weight,
         use_scheduler=cfg.use_scheduler,
-        warmup_late=cfg.warmup_late,
+        warmup_rate=cfg.warmup_rate,
         post_sentence_padding=cfg.post_sentence_padding,
         add_sep_between_sentences=cfg.add_sep_between_sentences,
     )
@@ -91,7 +91,8 @@ def run(cfg, cross_num, train_datasets, valid_dataset):
 
 @hydra.main(config_path="../config", config_name="conll2003", version_base="1.1")
 def main(cfg):
-    os.environ["CUDA_VISIBLE_DEVICES"] = cfg.visible_devices
+    if cfg.visible_devives:
+        os.environ["CUDA_VISIBLE_DEVICES"] = cfg.visible_devices
     if cfg.huggingface_cache:
         os.environ["TRANSFORMERS_CACHE"] = cfg.huggingface_cache
 

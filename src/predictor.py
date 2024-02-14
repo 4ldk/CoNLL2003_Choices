@@ -159,7 +159,8 @@ def pred(
 
 @hydra.main(config_path="../config", config_name="conll2003", version_base="1.1")
 def main(cfg):
-    os.environ["CUDA_VISIBLE_DEVICES"] = cfg.visible_devices
+    if cfg.visible_devives:
+        os.environ["CUDA_VISIBLE_DEVICES"] = cfg.visible_devices
     if cfg.huggingface_cache:
         os.environ["TRANSFORMERS_CACHE"] = cfg.huggingface_cache
     random.seed(cfg.seed)
@@ -168,11 +169,12 @@ def main(cfg):
     torch.cuda.manual_seed_all(cfg.seed)
     torch.backends.cudnn.deterministic = True
 
-    tokenizer = RobertaTokenizerDropout.from_pretrained(cfg.model_name, alpha=cfg.pred_p)
+    tokenizer = RobertaTokenizerDropout.from_pretrained(cfg.test_model_name, alpha=cfg.pred_p)
 
-    local_model = os.path.join(root_path, "model/epoch19.pth")
-    model = AutoModelForTokenClassification.from_pretrained(cfg.model_name, num_labels=len(ner_dict))
-    model.load_state_dict(torch.load(local_model))
+    model = AutoModelForTokenClassification.from_pretrained(cfg.test_model_name)
+    if cfg.load_local_model:
+        local_model = os.path.join(root_path, "model/epoch19.pth")
+        model.load_state_dict(torch.load(local_model))
     model = model.to(cfg.device)
 
     if cfg.test == "test":

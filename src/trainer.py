@@ -235,7 +235,7 @@ def train(
     weight_decay=0,
     use_loss_weight=False,
     use_scheduler=False,
-    warmup_late=0.01,
+    warmup_rate=0.01,
     post_sentence_padding=False,
     add_sep_between_sentences=False,
 ):
@@ -269,7 +269,7 @@ def train(
 
     weight = train_data["weight"].to(device) if use_loss_weight else None
     num_training_steps = int(len(train_loader) / accum_iter) * num_epoch
-    num_warmup_steps = int(num_training_steps * warmup_late)
+    num_warmup_steps = int(num_training_steps * warmup_rate)
 
     net = trainer(
         model_name=model_name,

@@ -8,7 +8,7 @@ accum_iter: 8
 lr: 5e-5
 num_epoch: 20
 length: 512
-p: 0
+p: 0 # subword regularization hyperparameter p in train step 
 seed: 42
 device: "cuda"
 model_name: "roberta-base" # bert-large-cased roberta-large
@@ -16,15 +16,17 @@ model_name: "roberta-base" # bert-large-cased roberta-large
 weight_decay: 0.01
 use_loss_weight: False
 use_scheduler: True
-warmup_late: 0.1
+warmup_rate: 0.1
 
 post_sentence_padding: True
 add_sep_between_sentences: True
 
-test: "valid" # valid, test, 2023, crossweigh
+load_local_model: False
+test_model_name: "4ldk/Roberta-Base-CoNLL2003"
+test: "test" # valid, test, 2023, crossweigh
 
-loop: 1
-pred_p: 0.1
+loop: 1 # the number of test loops
+pred_p: 0.1 # subword regularization hyperparameter p in test step
 
-huggingface_cache: "D:/huggingface/cashe"
-visible_devices: "0"
+huggingface_cache: False # "D:/huggingface/cashe"
+visible_devices: False # "0" 
